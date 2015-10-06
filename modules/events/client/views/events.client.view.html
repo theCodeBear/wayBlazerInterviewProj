@@ -1,3 +1,11 @@
-LIST VIEW
+<div class='text-center'>
+<button type='button' ng-click='addEvent()'>Add Event</button>
+</div>
 
-{{blah}}
+<ul class='event-list small-8 small-offset-2 columns'>
+  <li class='event-list-item' ng-repeat='item in fakeData'>
+    {{item.title}} <br>
+    {{item.description}} <br>
+    <button type='button'> x </button>
+  </li>
+</ul>

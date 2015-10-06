@@ -1,0 +1,15 @@
+/* CSS for events module */
+
+
+ul {
+  list-style-type: none;
+}
+
+.event-list {
+  background-color: gray;
+}
+
+.event-list-item {
+  /*border: 1px solid white;*/
+  padding: 20px;
+}
