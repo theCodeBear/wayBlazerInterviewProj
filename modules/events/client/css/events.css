@@ -1,15 +1,71 @@
 /* CSS for events module */
 
+.title-text {
+  margin-top: 2em;
+}
+
+.enter-text {
+  margin-top: 5em;
+  font-size: 2em;
+}
 
 ul {
   list-style-type: none;
 }
 
-.event-list {
-  background-color: gray;
+.event-list-item {
+  padding: 20px;
+  margin: 10px;
+  padding-bottom: 70px;
 }
 
-.event-list-item {
-  /*border: 1px solid white;*/
-  padding: 20px;
+.event-list-item:hover {
+  box-shadow: 0px 0px 5px 1px gray;
+}
+
+.event-list-item button, .event-list-item view-event  {
+  font-size: 1.3em;
+  height: 58px;
+}
+
+.event-category {
+  display: block;
+  color: #777;
+  margin-bottom: 5px;
+}
+
+.success {
+  color: green;
+  font-size: 1.5em;
+}
+
+.failure {
+  color: red;
+  font-size: 1.5em;
+}
+
+.featured:hover {
+  box-shadow: 0px 0px 5px 4px gray;
+}
+
+.featured-star {
+  color: gold;
+  display: block;
+  font-size: 1.5em;
+  float: right;
+}
+
+.add-event-button {
+  margin-top: 1em;
+  font-size: 2em;
+}
+
+.view-event-item {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.view-event-title {
+  font-size: 5em;
+  margin-bottom: 25px;
 }

@@ -2,27 +2,26 @@
 
 angular.module('events')
 
-.controller('EventsCtrl', ['$scope', '$http', function($scope, $http) {
+.controller('EventsCtrl', ['$scope', '$http', '$state', 'Event', function($scope, $http, $state, Event) {
 
-$http.get('/api/events').then(function(response) {
-  console.log('response', response);
-}).catch(function(err) {
-  console.log('err', err);
-});
+  Event.get().then(function(response) {
+    $scope.events = response.data;
+  }).catch(function(err) {
+    console.log('err', err);
+  });
 
-$scope.fakeData = [
-  {
-    title: 'blah',
-    description: 'yo man this be descript'
-  },
-  {
-    title: 'bloopitdy',
-    description: 'laddy da da'
-  }
-];
 
-$scope.addEvent = function() {
-  $scope.fakeData.push({title:'a new event', description: 'a new descript'});
-};
+  $scope.deleteEvent = function(id, index) {
+    Event.delete(id).then(function(response) {
+      $scope.events.splice(index, 1);
+    }).catch(function(err) {
+      console.log('err', err);
+    });
+  };
+
+  $scope.goToEdit = function(event) {
+    Event.pass(event);
+    $state.go('editEvent');
+  };
 
 }]);

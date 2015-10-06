@@ -1,11 +1,19 @@
-<div class='text-center'>
-<button type='button' ng-click='addEvent()'>Add Event</button>
+<div class='row'>
+  <div class='text-center small-10 small-offset-1 medium-8 medium-offset-2 columns'>
+    <a class='button expand add-event-button' ui-sref='addEvent'>Add Event</a>
+  </div>
 </div>
 
-<ul class='event-list small-8 small-offset-2 columns'>
-  <li class='event-list-item' ng-repeat='item in fakeData'>
-    {{item.title}} <br>
-    {{item.description}} <br>
-    <button type='button'> x </button>
+<ul class='event-list small-10 small-offset-1 medium-8 medium-offset-2 columns'>
+  <li class='event-list-item' ng-class='{featured: event.featured};' ng-repeat='event in events | orderBy: "!featured"'>
+    <i ng-if='event.featured' class='glyphicon glyphicon-star featured-star' title='Featured Event'></i>
+    <h1 class='text-center'>{{event.title}}</h1>
+    <p class='text-center'>{{event.description}}</p>
+    <em class='event-category text-center'>{{event.category.toUpperCase()}}</em>
+    <p class='text-center'>From: {{event.startDate | date: longDate}}</p>
+    <!-- To: {{event.endDate | date: longDate}} <br> -->
+    <button type='button' class='button small-4 columns' ng-click='goToEdit(event)'>Edit</button>
+    <view-event event='event' class='button small-4 columns success'>View</view-event>
+    <button type='button' class='button small-4 columns alert' ng-click='deleteEvent(event._id, $index)'> x </button>
   </li>
 </ul>

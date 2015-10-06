@@ -1,0 +1,25 @@
+<h1 class='text-center'>Edit Event</h1>
+
+<div class='row'>
+  <form class='small-12 medium-8 medium-offset-2 large-6 large-offset-3 column' ng-submit='editEvent(event)'>
+    <input type='text' ng-model='event.title' placeholder='Title' required>
+    <input type='text' ng-model='event.description' placeholder='Description' required>
+    <select ng-model='event.category'>
+      <option value=''> None </option>
+      <option value='Sports'> Sports </option>
+      <option value='Outdoors'> Outdoors </option>
+      <option value='Business'> Business </option>
+      <option value='Fine Dining'> Fine Dining </option>
+      <option value='Party'> Party </option>
+      <option value='Entertainment'> Entertainment </option>
+    </select>
+    <input type='checkbox' ng-model='event.featured'> Featured Event
+    <input type='date' ng-model='event.startDate' placeholder='Start Date' required>
+    <input type='date' ng-model='event.endDate' required>
+
+    <button type='submit' class='button expand'>Submit</button>
+  </form>
+</div>
+
+<div class='text-center success' ng-if='eventSucceeded'>Event Successfully Created!</div>
+<div class='text-center failure' ng-if='eventFailed'>Failed to Create Event :(</div>

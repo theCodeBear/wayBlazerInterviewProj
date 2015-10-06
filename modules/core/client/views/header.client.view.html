@@ -21,12 +21,15 @@
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
-      <li data-ui-sref-active="active">
+      <!-- <li data-ui-sref-active="active">
         <a data-ui-sref="authentication.signup">Sign Up</a>
       </li>
       <li class="divider-vertical"></li>
       <li data-ui-sref-active="active">
         <a data-ui-sref="authentication.signin">Sign In</a>
+      </li> -->
+      <li>
+        <a ui-sref='events'>Events List</a>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
