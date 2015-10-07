@@ -18,7 +18,7 @@
     <input type='date' ng-model='event.startDate' placeholder='Start Date' required>
     <input type='date' ng-model='event.endDate' required>
 
-    <button id='eventSubmitButton' type='submit' class='button expand'>Submit</button>
+    <button id='eventSubmitButton' type='submit' class='button expand' ng-disabled='submitProcessing'>Submit</button>
   </form>
 </div>
 

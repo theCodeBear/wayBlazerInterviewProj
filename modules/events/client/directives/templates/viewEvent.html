@@ -2,17 +2,17 @@
 
 <div class='row'>
   <div class='small-12 medium-8 medium-offset-2 column text-center'>
-    <label class='view-event-title text-center'>{{event.title.toUpperCase()}}</label>
-    <em class='h2 view-event-item' ng-if='event.category'> -- A {{event.category}} Event -- </em>
-    <p class='view-event-item'> {{event.description}} </p>
+    <label class='view-event-title text-center'>{{::event.title.toUpperCase()}}</label>
+    <em class='h2 view-event-item' ng-if='event.category'> -- A {{::event.category}} Event -- </em>
+    <p class='view-event-item'> {{::event.description}} </p>
     <div class='view-event-item'>
-      <span class='small-4 columns'>{{ event.startDate | date: longDate }} </span>
+      <span class='small-4 columns'>{{:: event.startDate | date: longDate }} </span>
       <span class='small-4 columns text-center'> -----> </span>
-      <span class='small-4 columns'>{{ event.endDate | date: longDate }} </span>
+      <span class='small-4 columns'>{{:: event.endDate | date: longDate }} </span>
     </div>
     <div class='view-event-item'>
-      <em> Updated on: {{event.updatedAt | date: longDate }} </em><br>
-      <em> Created on: {{event.createdAt | date: longDate }} </em>
+      <em> Updated on: {{::event.updatedAt | date: longDate }} </em><br>
+      <em> Created on: {{::event.createdAt | date: longDate }} </em>
     </div>
     <p class='h2 text-center view-event-item' ng-if='event.featured'>
       This is a Featured event!

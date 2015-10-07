@@ -28,6 +28,12 @@ ul {
   height: 58px;
 }
 
+.remove.ng-hide {
+  -webkit-transition: 0.3s linear all;
+  transition: 0.3s linear all;
+  opacity: 0;
+}
+
 .event-category {
   display: block;
   color: #777;

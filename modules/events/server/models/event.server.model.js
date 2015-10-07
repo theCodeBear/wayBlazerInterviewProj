@@ -13,14 +13,5 @@ var eventSchema = mongoose.Schema({
   updatedAt:    { type: Date, default: Date.now, required: true }
 });
 
-eventSchema.statics.create = function(event, cb) {
-  console.log('event in model', event);
-  var event = new Event(event);
-  event.save(function(err, event) {
-    if (err) return cb(err);
-    return cb(null, event);
-  });
-};
-
 var Event = mongoose.model('Event', eventSchema);
 module.exports = Event;

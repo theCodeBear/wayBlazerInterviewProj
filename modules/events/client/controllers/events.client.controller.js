@@ -13,7 +13,7 @@ angular.module('events')
 
   $scope.deleteEvent = function(id, index) {
     Event.delete(id).then(function(response) {
-      $scope.events.splice(index, 1);
+      $scope['remove'+index] = true;
     }).catch(function(err) {
       console.log('err', err);
     });

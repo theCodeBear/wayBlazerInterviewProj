@@ -5,20 +5,27 @@ angular.module('events')
 .controller('AddEventCtrl', ['$scope', '$http', 'Event', function($scope, $http, Event) {
 
   $scope.addEvent = function() {
-    console.log($scope.event);
-    document.getElementById('eventSubmitButton').disabled = true;
+    $scope.submitProcessing = true;
+    $scope.eventFailed = false;
+    $scope.eventSucceeded = false;
     if (!$scope.event.featured) $scope.event.featured = false;
+    if ($scope.event.startDate <= $scope.event.endDate) {
+      createEvent($scope.event);
+    } else {
+      $scope.eventFailed = true;
+      $scope.submitProcessing = false;
+    }
+  };
 
-    Event.create($scope.event).then(function(response) {
-      console.log('it worked', response);
+  function createEvent(event) {
+    Event.create(event).then(function(response) {
       $scope.eventSucceeded = true;
       $scope.event = {};
-      document.getElementById('eventSubmitButton').disabled = false;
     }).catch(function(err) {
-      console.log('err', err.data);
       $scope.eventFailed = true;
-      document.getElementById('eventSubmitButton').disabled = true;
+    }).finally(function() {
+      $scope.submitProcessing = false;
     });
-  };
+  }
 
 }]);
