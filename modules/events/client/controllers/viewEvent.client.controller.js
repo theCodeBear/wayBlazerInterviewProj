@@ -2,8 +2,8 @@
 
 angular.module('events')
 
-.controller('ViewEventCtrl', ['$scope', 'event', function($scope, event) {
+.controller('ViewEventCtrl', ['$scope', '$stateParams', 'Event', function($scope, $stateParams, Event) {
 
-  $scope.event = event;
+  $scope.event = _.find(Event.retrieve(), {_id: $stateParams.eventId});
 
 }]);

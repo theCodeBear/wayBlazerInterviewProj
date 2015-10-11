@@ -19,6 +19,9 @@ angular.module('events')
 
   function createEvent(event) {
     Event.create(event).then(function(response) {
+      var events = Event.retrieve();
+      events.push(response.data);
+      Event.store(events);
       $scope.eventSucceeded = true;
       $scope.event = {};
     }).catch(function(err) {

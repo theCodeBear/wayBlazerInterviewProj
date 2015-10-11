@@ -4,7 +4,6 @@ angular.module('events')
 
 .factory('Event', ['$http', function($http) {
 
-  var featuredEvents = [];
   var events = [];
   var passedEvent = {};
 
@@ -13,8 +12,8 @@ angular.module('events')
     create: create,
     update: update,
     delete: destroy,
-    pass: pass,
-    getPassedEvent: getPassedEvent
+    store: store,
+    retrieve: retrieve
   };
 
   return service;
@@ -28,22 +27,21 @@ angular.module('events')
   }
 
   function update(event) {
+    events[events.indexOf(_.find(events, {_id: event._id}))] = event;
     return $http.put('api/events/update/' + event._id, event);
   }
 
   function destroy(eventId) {
+    events.splice(events.indexOf(_.find(events, {_id: eventId})), 1);
     return $http.delete('api/events/delete/' + eventId);
   }
 
-  function pass(event) {
-    passedEvent = event;
+  function store(theEvents) {
+    events = theEvents;
   }
 
-  function getPassedEvent() {
-    var temp = passedEvent;
-    passedEvent = {};
-    return temp;
+  function retrieve() {
+    return events;
   }
-
 
 }]);

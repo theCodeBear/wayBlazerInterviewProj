@@ -2,11 +2,11 @@
 
 angular.module('events')
 
-.controller('EditEventCtrl', ['$scope', '$http', '$state', 'event', 'Event', function($scope, $http, $state, event, Event) {
+.controller('EditEventCtrl', ['$scope', '$http', '$state', '$stateParams', 'Event', function($scope, $http, $state, $stateParams, Event) {
 
-  $scope.event = event;
-  $scope.event.startDate = new Date(Date.parse(event.startDate));
-  $scope.event.endDate = new Date(Date.parse(event.endDate));
+  $scope.event = _.find(Event.retrieve(), {_id: $stateParams.eventId});;
+  $scope.event.startDate = new Date(Date.parse($scope.event.startDate));
+  $scope.event.endDate = new Date(Date.parse($scope.event.endDate));
 
   $scope.editEvent = function(updatedEvent) {
     Event.update(updatedEvent).then(function(response) {

@@ -1,7 +1,17 @@
 'use strict';
 
 // Setting up route
-angular.module('events').config(['$stateProvider',
+angular.module('events')
+
+.run(['$http', 'Event', function($http, Event) {
+  Event.get().then(function(response) {
+    Event.store(response.data);
+  }).catch(function(err) {
+    alert('err in getting events on reload');
+  });
+}])
+
+.config(['$stateProvider',
   function ($stateProvider) {
 
     // Home state routing
@@ -20,25 +30,15 @@ angular.module('events').config(['$stateProvider',
     })
 
     .state('editEvent', {
-      url: '/editEvent',
+      url: '/edit/:eventId',
       templateUrl: 'modules/events/views/editEvent.client.view.html',
       controller: 'EditEventCtrl',
-      resolve: {
-        event: function(Event) {
-          return Event.getPassedEvent();
-        }
-      }
     })
 
     .state('viewEvent', {
-      url: '/viewEvent/',
+      url: '/events/:eventId',
       templateUrl: 'modules/events/directives/templates/viewEvent.html',
-      controller: 'ViewEventCtrl',
-      resolve: {
-        event: function(Event) {
-          return Event.getPassedEvent();
-        }
-      }
+      controller: 'ViewEventCtrl'
     });
   }
 ]);

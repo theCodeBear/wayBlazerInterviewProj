@@ -20,8 +20,7 @@ angular.module('events')
   };
 
   $scope.goToEdit = function(event) {
-    Event.pass(event);
-    $state.go('editEvent');
+    $state.go('editEvent', {eventId: event._id});
   };
 
 }]);

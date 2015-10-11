@@ -11,8 +11,7 @@ angular.module('events')
     },
     link: function(scope, elem, attrs) {
       elem.bind('click', function() {
-        Event.pass(scope.event);
-        $state.go('viewEvent');
+        $state.go('viewEvent', {eventId: scope.event._id});
       });
     },
   };
