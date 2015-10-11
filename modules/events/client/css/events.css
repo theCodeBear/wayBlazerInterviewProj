@@ -20,7 +20,7 @@ ul {
 }
 
 .event-list-item:hover {
-  box-shadow: 0px 0px 5px 1px gray;
+  box-shadow: 0 0 5px 1px gray;
 }
 
 .event-list-item button, .event-list-item view-event  {
@@ -31,6 +31,8 @@ ul {
 .remove.ng-hide {
   -webkit-transition: 0.3s linear all;
   transition: 0.3s linear all;
+  -moz-transition: 0.3s linear all;
+  -o-transition: 0.3s linear all;
   opacity: 0;
 }
 
@@ -51,7 +53,7 @@ ul {
 }
 
 .featured:hover {
-  box-shadow: 0px 0px 5px 4px gray;
+  box-shadow: 0 0 5px 4px gray;
 }
 
 .featured-star {

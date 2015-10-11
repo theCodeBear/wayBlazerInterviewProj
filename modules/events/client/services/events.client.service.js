@@ -4,10 +4,45 @@ angular.module('events')
 
 .factory('Event', ['$http', function($http) {
 
-  var events = [];
-  var passedEvent = {};
 
-  var service = {
+  // PRIVATE VARIABLE
+
+  var events = [];
+
+
+
+  // PUBLIC METHODS
+
+  var get = function() {
+    return $http.get('api/events');
+  };
+
+  var create = function(event) {
+    return $http.post('api/events/create', event);
+  };
+
+  var update = function(event) {
+    events[events.indexOf(_.find(events, {_id: event._id}))] = event;
+    return $http.put('api/events/update/' + event._id, event);
+  };
+
+  var destroy = function(eventId) {
+    events.splice(events.indexOf(_.find(events, {_id: eventId})), 1);
+    return $http.delete('api/events/delete/' + eventId);
+  };
+
+  var store = function(theEvents) {
+    events = theEvents;
+  };
+
+  var retrieve = function() {
+    return events;
+  };
+
+
+
+
+  return {
     get: get,
     create: create,
     update: update,
@@ -15,33 +50,5 @@ angular.module('events')
     store: store,
     retrieve: retrieve
   };
-
-  return service;
-
-  function get() {
-    return $http.get('api/events');
-  }
-
-  function create(event) {
-    return $http.post('api/events/create', event);
-  }
-
-  function update(event) {
-    events[events.indexOf(_.find(events, {_id: event._id}))] = event;
-    return $http.put('api/events/update/' + event._id, event);
-  }
-
-  function destroy(eventId) {
-    events.splice(events.indexOf(_.find(events, {_id: eventId})), 1);
-    return $http.delete('api/events/delete/' + eventId);
-  }
-
-  function store(theEvents) {
-    events = theEvents;
-  }
-
-  function retrieve() {
-    return events;
-  }
 
 }]);
