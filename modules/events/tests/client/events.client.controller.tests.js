@@ -15,8 +15,6 @@
       }));
 
       it('should load events data from server', function() {
-        // $httpBackend.expect('GET', '/api/events').respond({'blah': 'yo', 'yay': 'yowzah'});
-
         var testData = {data: 'test'};
         var controller = $controller('EventsCtrl', { $scope: scope });
         $httpBackend.expectGET('/api/events').respond(200, testData);

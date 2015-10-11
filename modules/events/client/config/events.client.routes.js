@@ -37,7 +37,7 @@ angular.module('events')
 
     .state('viewEvent', {
       url: '/events/:eventId',
-      templateUrl: 'modules/events/directives/templates/viewEvent.html',
+      templateUrl: 'modules/events/views/viewEvent.client.view.html',
       controller: 'ViewEventCtrl'
     });
   }

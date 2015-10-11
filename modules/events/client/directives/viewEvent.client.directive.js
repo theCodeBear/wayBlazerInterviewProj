@@ -13,7 +13,7 @@ angular.module('events')
       elem.bind('click', function() {
         $state.go('viewEvent', {eventId: scope.event._id});
       });
-    },
+    }
   };
 
 }]);
